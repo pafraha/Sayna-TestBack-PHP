@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +15,6 @@ use MohamedGaber\SanctumRefreshToken\Models\PersonalAccessToken;
  */
 class AuthController extends Controller
 {
-
     /**
      * Get User information
      *
@@ -28,16 +26,15 @@ class AuthController extends Controller
      */
     public function user($token): JsonResponse
     {
-        $_token = PersonalAccessToken::findToken($token);
-
-        if (count(str_split($_token)) === 40){
+        if (count(str_split($token)) !== 40){
             return new JsonResponse([
                 'error' => true,
                 'message' => 'Le token envoyé n\'est pas conforme.'
             ], 401);
         }
 
-        if (isset($_token) && $_token->expired_at < Carbon::now()){ // token revoke
+        $_token = PersonalAccessToken::findToken($token);
+        if ($_token && $_token->expired_at < Carbon::now()){ // token revoke
             return new JsonResponse([
                 'error' => true,
                 'message' => 'Votre token n\'ai plus valide, veuillez le réinitialiser.'
@@ -69,16 +66,15 @@ class AuthController extends Controller
      */
     public function users($token): JsonResponse
     {
-        $_token = PersonalAccessToken::findToken($token);
-
-        if (count(str_split($_token)) === 40){
+        if (count(str_split($token)) !== 40){
             return new JsonResponse([
                 'error' => true,
                 'message' => 'Le token envoyé n\'est pas conforme.'
             ], 401);
         }
 
-        if (isset($_token) && $_token->expired_at < Carbon::now()){ // token revoke
+        $_token = PersonalAccessToken::findToken($token);
+        if ($_token && $_token->expired_at < Carbon::now()){ // token revoke
             return new JsonResponse([
                 'error' => true,
                 'message' => 'Votre token n\'ai plus valide, veuillez le réinitialiser.'
@@ -115,7 +111,7 @@ class AuthController extends Controller
      * @param $token
      * @return JsonResponse
      */
-    public function update(Request $request, $token): JsonResponse
+    public function change(Request $request, $token): JsonResponse
     {
         if (!$request->all()){
             return new JsonResponse([
@@ -124,39 +120,34 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $_token = PersonalAccessToken::findToken($token);
-
-        if (count(str_split($_token)) === 40){
+        if (count(str_split($token)) !== 40){
             return new JsonResponse([
                 'error' => true,
                 'message' => 'Le token envoyé n\'est pas conforme.'
             ], 401);
         }
 
-        if (isset($_token) && $_token->expired_at < Carbon::now()){ // token revoke
+        $_token = PersonalAccessToken::findToken($token);
+        if (is_null($_token) || $_token->expired_at < Carbon::now()){ // token revoke
             return new JsonResponse([
                 'error' => true,
                 'message' => 'Votre token n\'ai plus valide, veuillez le réinitialiser.'
             ], 401);
         }
 
-        if ($_token && $_token->tokenable()){
-            $user = $_token->tokenable()->first();
-            $user->update($request->all());
-            if ($request->get('password')){
-                $user>$this->update(['password' => Hash::make($request->get('password'))]);
-            }
-
-            return new JsonResponse([
-                'error' => true,
-                'message' => 'L\'utilisateur a été modifié avec succès.'
-            ], 200);
+        /** @var User $user */
+        $user = $_token->tokenable()->first();
+        $user->update($request->all());
+        if ($request->has('password')){
+            $user->update([
+                'password' => Hash::make($request->get('password'))
+            ]);
         }
 
         return new JsonResponse([
             'error' => true,
-            'message' => 'Votre token n\'ai pas valide, veuillez le réinitialiser.'
-        ], 401);
+            'message' => 'L\'utilisateur a été modifié avec succès.'
+        ], 200);
     }
 
     /**

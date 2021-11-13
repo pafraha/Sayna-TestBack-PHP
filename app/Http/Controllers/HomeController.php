@@ -16,7 +16,8 @@ class HomeController extends Controller
                 'data' => [
                     'title' => 'Page d\'index.html',
                     'version' => '1.0-'.app()->getLocale(),
-                    'platform.' => 'developer back-end',
+                    'github' => 'https://github.com/pafraha/Sayna-TestBack-PHP',
+                    'description.' => 'API Back-end with mongodb Atlas',
                     'documentation' => "https://".$_SERVER['HTTP_HOST']."/docs",
                     'support' => 'raharinirinapf@gmail.com'
                 ]
