@@ -1,0 +1,381 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "api_mongo_ui.test"
+        }
+    ],
+    "info": {
+        "name": "SAYNA API",
+        "_postman_id": "07c53440-a617-4f1b-980b-8ccc88dd6ac6",
+        "description": "Test developer Back-end pour SAYNA API",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Return an empty response simply to trigger the storage of the CSRF cookie in the browser.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "sanctum\/csrf-cookie",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/sanctum\/csrf-cookie"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6InVIeDR0eFd6bDJEejl5Z2hHenpoSnc9PSIsInZhbHVlIjoiRFpKaHlSUU0zTm1TL2p2cVFZK2dXOVNLSFhqNFUrZ1F5d1VkNmdSU255d1hZY1dkN1R3b1VyOWhXaHkycWRmZmxnU25wQ0NTMTRxWXg3c1dGWldKN1dlaWVmeEFzRkdleTg4NVBqbk9WVTRaMEZUcksrZlRYQ1owUFFDSlArUWciLCJtYWMiOiI2YzhmZTczOGYyOTk5MzdkMGJhNmJjZjRkOTM0OWZlNTA1ODA4ZWExNjE5YmEwYmYxN2FiNTUyMjBjNjAzMTM3IiwidGFnIjoiIn0%3D; expires=Sun, 07-Nov-2021 11:13:42 GMT; Max-Age=7200; path=\/; samesite=lax; sayne_api_session=eyJpdiI6InNXdlRsUkZBUW1qcDBXUDAyQzF3WVE9PSIsInZhbHVlIjoiZG01SFZMc1ZqRUNFdGp0V0V6d0FLcEZTWTJvOTNpVkl2YkNEZDdYSzdRQW9JVGt4RGcyNlRVL3dZcll4WUZLUys4UXJwU3pwM2tIdWJMTmJNTThpSFNRUDF0QzJOME1SYWRpZis2YkZ4TnNxZk93VDd4Z0xOOTBVd04vaFczcDQiLCJtYWMiOiIxOTRkYTNiMGQyOTdmYTczMjBkZTMxNWY4NTc4Y2YyMTgxY2M1NGQxZDI5NjliODQyMzYzMTQxZmM1ODRiOWFhIiwidGFnIjoiIn0%3D; expires=Sun, 07-Nov-2021 11:13:42 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 204,
+                            "body": "",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\/",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "\/",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/\/"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"title\":\"error 404: page not found.\",\"message\":\"Undefined index: HTTP_HOST\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a new User",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"firstname\":\"uecfpqirdoksnrcpvdudrqovkrvplqycvajvzboqzsifmimtypdhuojfudqgjqlhjwzvmxibgmwhmttbaddcjdjnikkvkkhofrxeybuoxv\",\"lastname\":\"sisjulw\",\"date_naissance\":\"yrpjftxrxhdlivvncvurefewwcoyyizcaguioqdvfrk\",\"sexe\":\"wwgmkztfybqkbasadpoysuxctklasegxkwwgqxqpyggyzjjslwrgiygeertyogfzmujgrauwpdkwqzvmembb\",\"email\":\"jrxgfkzzgaekuypilunmmmewbizrlgljlluaxmtbygqmebznufuailljqdyvsgtxzffutspakapslzexufarkqzgidczraccsolwoarcfseofedbzuz\",\"password\":\"qcn\",\"confirm_password\":\"consequatur\"}"
+                        },
+                        "description": "This endpoint  lets you create a user",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Log in a user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"vel\",\"password\":\"nihil\"}"
+                        },
+                        "description": "This endpoint lets you log in a user with email and password",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User information",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "user\/:token",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/user\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "neque",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint lets to get the authenticated user information"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"error\":true,\"message\":\"Votre token n'ai pas valide, veuillez le r\\u00e9initialiser.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Users list",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "users\/:token",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/users\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "reprehenderit",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint lets you getting all register Users."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"error\":true,\"message\":\"Votre token n'ai pas valide, veuillez le r\\u00e9initialiser.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Change user information",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "user\/:token",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/user\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "adipisci",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"firstname\":\"adipisci\",\"lastname\":\"ducimus\",\"date_naissance\":\"aut\",\"password\":\"eos\",\"email\":\"aut\",\"sexe\":\"laboriosam\"}"
+                        },
+                        "description": "This endpoint lets you updating some information such as password and many else."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Log out",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "user\/:token",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/user\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "illo",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint lets you logging out a user."
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>SAYNA API</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+    <script src="../docs/js/theme-default-3.14.1.js"></script>
+
+    <link rel="stylesheet"
+          href="//unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="//unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script src="//cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script>
+        var baseUrl = "http://api_mongo_ui.test";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.14.1.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;php&quot;,&quot;javascript&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+      </span>
+</a>
+<div class="tocify-wrapper">
+                <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="php">php</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+        <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: November 7 2021</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1>Introduction</h1>
+<p>Test developer Back-end pour SAYNA API</p>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://api_mongo_ui.test</code></pre>
+
+        <h1>Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+            <h2 id="endpoints-GETsanctum-csrf-cookie">Return an empty response simply to trigger the storage of the CSRF cookie in the browser.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETsanctum-csrf-cookie">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://api_mongo_ui.test/sanctum/csrf-cookie" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://api_mongo_ui.test/sanctum/csrf-cookie',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/sanctum/csrf-cookie"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETsanctum-csrf-cookie">
+            <blockquote>
+            <p>Example response (204):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+access-control-allow-origin: *
+set-cookie: XSRF-TOKEN=eyJpdiI6InVIeDR0eFd6bDJEejl5Z2hHenpoSnc9PSIsInZhbHVlIjoiRFpKaHlSUU0zTm1TL2p2cVFZK2dXOVNLSFhqNFUrZ1F5d1VkNmdSU255d1hZY1dkN1R3b1VyOWhXaHkycWRmZmxnU25wQ0NTMTRxWXg3c1dGWldKN1dlaWVmeEFzRkdleTg4NVBqbk9WVTRaMEZUcksrZlRYQ1owUFFDSlArUWciLCJtYWMiOiI2YzhmZTczOGYyOTk5MzdkMGJhNmJjZjRkOTM0OWZlNTA1ODA4ZWExNjE5YmEwYmYxN2FiNTUyMjBjNjAzMTM3IiwidGFnIjoiIn0%3D; expires=Sun, 07-Nov-2021 11:13:42 GMT; Max-Age=7200; path=/; samesite=lax; sayne_api_session=eyJpdiI6InNXdlRsUkZBUW1qcDBXUDAyQzF3WVE9PSIsInZhbHVlIjoiZG01SFZMc1ZqRUNFdGp0V0V6d0FLcEZTWTJvOTNpVkl2YkNEZDdYSzdRQW9JVGt4RGcyNlRVL3dZcll4WUZLUys4UXJwU3pwM2tIdWJMTmJNTThpSFNRUDF0QzJOME1SYWRpZis2YkZ4TnNxZk93VDd4Z0xOOTBVd04vaFczcDQiLCJtYWMiOiIxOTRkYTNiMGQyOTdmYTczMjBkZTMxNWY4NTc4Y2YyMTgxY2M1NGQxZDI5NjliODQyMzYzMTQxZmM1ODRiOWFhIiwidGFnIjoiIn0%3D; expires=Sun, 07-Nov-2021 11:13:42 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+ </code></pre>
+        </details>         <pre>
+<code>[Empty response]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETsanctum-csrf-cookie" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETsanctum-csrf-cookie"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETsanctum-csrf-cookie"></code></pre>
+</span>
+<span id="execution-error-GETsanctum-csrf-cookie" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETsanctum-csrf-cookie"></code></pre>
+</span>
+<form id="form-GETsanctum-csrf-cookie" data-method="GET"
+      data-path="sanctum/csrf-cookie"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETsanctum-csrf-cookie', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETsanctum-csrf-cookie"
+                    onclick="tryItOut('GETsanctum-csrf-cookie');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETsanctum-csrf-cookie"
+                    onclick="cancelTryOut('GETsanctum-csrf-cookie');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETsanctum-csrf-cookie" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>sanctum/csrf-cookie</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-GET-">GET /</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GET-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://api_mongo_ui.test/" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://api_mongo_ui.test/',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GET-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;title&quot;: &quot;error 404: page not found.&quot;,
+    &quot;message&quot;: &quot;Undefined index: HTTP_HOST&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GET-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GET-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GET-"></code></pre>
+</span>
+<span id="execution-error-GET-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-"></code></pre>
+</span>
+<form id="form-GET-" data-method="GET"
+      data-path="/"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GET-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GET-"
+                    onclick="tryItOut('GET-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GET-"
+                    onclick="cancelTryOut('GET-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GET-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>/</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-POSTregister">Create a new User</h2>
+
+<p>
+</p>
+
+<p>This endpoint  lets you create a user</p>
+
+<span id="example-requests-POSTregister">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://api_mongo_ui.test/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"firstname\": \"uecfpqirdoksnrcpvdudrqovkrvplqycvajvzboqzsifmimtypdhuojfudqgjqlhjwzvmxibgmwhmttbaddcjdjnikkvkkhofrxeybuoxv\",
+    \"lastname\": \"sisjulw\",
+    \"date_naissance\": \"yrpjftxrxhdlivvncvurefewwcoyyizcaguioqdvfrk\",
+    \"sexe\": \"wwgmkztfybqkbasadpoysuxctklasegxkwwgqxqpyggyzjjslwrgiygeertyogfzmujgrauwpdkwqzvmembb\",
+    \"email\": \"jrxgfkzzgaekuypilunmmmewbizrlgljlluaxmtbygqmebznufuailljqdyvsgtxzffutspakapslzexufarkqzgidczraccsolwoarcfseofedbzuz\",
+    \"password\": \"qcn\",
+    \"confirm_password\": \"consequatur\"
+}"
+</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://api_mongo_ui.test/register',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'firstname' =&gt; 'uecfpqirdoksnrcpvdudrqovkrvplqycvajvzboqzsifmimtypdhuojfudqgjqlhjwzvmxibgmwhmttbaddcjdjnikkvkkhofrxeybuoxv',
+            'lastname' =&gt; 'sisjulw',
+            'date_naissance' =&gt; 'yrpjftxrxhdlivvncvurefewwcoyyizcaguioqdvfrk',
+            'sexe' =&gt; 'wwgmkztfybqkbasadpoysuxctklasegxkwwgqxqpyggyzjjslwrgiygeertyogfzmujgrauwpdkwqzvmembb',
+            'email' =&gt; 'jrxgfkzzgaekuypilunmmmewbizrlgljlluaxmtbygqmebznufuailljqdyvsgtxzffutspakapslzexufarkqzgidczraccsolwoarcfseofedbzuz',
+            'password' =&gt; 'qcn',
+            'confirm_password' =&gt; 'consequatur',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "firstname": "uecfpqirdoksnrcpvdudrqovkrvplqycvajvzboqzsifmimtypdhuojfudqgjqlhjwzvmxibgmwhmttbaddcjdjnikkvkkhofrxeybuoxv",
+    "lastname": "sisjulw",
+    "date_naissance": "yrpjftxrxhdlivvncvurefewwcoyyizcaguioqdvfrk",
+    "sexe": "wwgmkztfybqkbasadpoysuxctklasegxkwwgqxqpyggyzjjslwrgiygeertyogfzmujgrauwpdkwqzvmembb",
+    "email": "jrxgfkzzgaekuypilunmmmewbizrlgljlluaxmtbygqmebznufuailljqdyvsgtxzffutspakapslzexufarkqzgidczraccsolwoarcfseofedbzuz",
+    "password": "qcn",
+    "confirm_password": "consequatur"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-POSTregister">
+</span>
+<span id="execution-results-POSTregister" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTregister"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTregister"></code></pre>
+</span>
+<span id="execution-error-POSTregister" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTregister"></code></pre>
+</span>
+<form id="form-POSTregister" data-method="POST"
+      data-path="register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTregister', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTregister"
+                    onclick="tryItOut('POSTregister');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTregister"
+                    onclick="cancelTryOut('POSTregister');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTregister" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>register</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>firstname</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="firstname"
+               data-endpoint="POSTregister"
+               value="uecfpqirdoksnrcpvdudrqovkrvplqycvajvzboqzsifmimtypdhuojfudqgjqlhjwzvmxibgmwhmttbaddcjdjnikkvkkhofrxeybuoxv"
+               data-component="body" hidden>
+    <br>
+<p>Le texte de value ne peut contenir plus de 255 caractères.</p>
+        </p>
+                <p>
+            <b><code>lastname</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="lastname"
+               data-endpoint="POSTregister"
+               value="sisjulw"
+               data-component="body" hidden>
+    <br>
+<p>Le texte de value ne peut contenir plus de 255 caractères.</p>
+        </p>
+                <p>
+            <b><code>date_naissance</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="date_naissance"
+               data-endpoint="POSTregister"
+               value="yrpjftxrxhdlivvncvurefewwcoyyizcaguioqdvfrk"
+               data-component="body" hidden>
+    <br>
+<p>Le texte de value ne peut contenir plus de 255 caractères.</p>
+        </p>
+                <p>
+            <b><code>sexe</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="sexe"
+               data-endpoint="POSTregister"
+               value="wwgmkztfybqkbasadpoysuxctklasegxkwwgqxqpyggyzjjslwrgiygeertyogfzmujgrauwpdkwqzvmembb"
+               data-component="body" hidden>
+    <br>
+<p>Le texte de value ne peut contenir plus de 255 caractères.</p>
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTregister"
+               value="jrxgfkzzgaekuypilunmmmewbizrlgljlluaxmtbygqmebznufuailljqdyvsgtxzffutspakapslzexufarkqzgidczraccsolwoarcfseofedbzuz"
+               data-component="body" hidden>
+    <br>
+<p>Le champ value doit être une adresse e-mail valide. Le texte de value ne peut contenir plus de 255 caractères.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTregister"
+               value="qcn"
+               data-component="body" hidden>
+    <br>
+<p>Le texte value doit contenir au moins 4 caractères.</p>
+        </p>
+                <p>
+            <b><code>confirm_password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="confirm_password"
+               data-endpoint="POSTregister"
+               value="consequatur"
+               data-component="body" hidden>
+    <br>
+<p>Les champs value et <code>password</code> doivent être identiques.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTlogin">Log in a user</h2>
+
+<p>
+</p>
+
+<p>This endpoint lets you log in a user with email and password</p>
+
+<span id="example-requests-POSTlogin">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://api_mongo_ui.test/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"vel\",
+    \"password\": \"nihil\"
+}"
+</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://api_mongo_ui.test/login',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'email' =&gt; 'vel',
+            'password' =&gt; 'nihil',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "vel",
+    "password": "nihil"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-POSTlogin">
+</span>
+<span id="execution-results-POSTlogin" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTlogin"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTlogin"></code></pre>
+</span>
+<span id="execution-error-POSTlogin" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTlogin"></code></pre>
+</span>
+<form id="form-POSTlogin" data-method="POST"
+      data-path="login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTlogin', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTlogin"
+                    onclick="tryItOut('POSTlogin');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTlogin"
+                    onclick="cancelTryOut('POSTlogin');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTlogin" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTlogin"
+               value="vel"
+               data-component="body" hidden>
+    <br>
+<p>The email of the user. exemple@mail.com</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTlogin"
+               value="nihil"
+               data-component="body" hidden>
+    <br>
+<p>The password of the user. And must be 6 characters in min.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-GETuser--token-">Get User information</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint lets to get the authenticated user information</p>
+
+<span id="example-requests-GETuser--token-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://api_mongo_ui.test/user/neque" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://api_mongo_ui.test/user/neque',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/user/neque"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETuser--token-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;message&quot;: &quot;Votre token n'ai pas valide, veuillez le r&eacute;initialiser.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETuser--token-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETuser--token-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETuser--token-"></code></pre>
+</span>
+<span id="execution-error-GETuser--token-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETuser--token-"></code></pre>
+</span>
+<form id="form-GETuser--token-" data-method="GET"
+      data-path="user/{token}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETuser--token-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETuser--token-"
+                    onclick="tryItOut('GETuser--token-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETuser--token-"
+                    onclick="cancelTryOut('GETuser--token-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETuser--token-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>user/{token}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETuser--token-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETuser--token-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="token"
+               data-endpoint="GETuser--token-"
+               value="neque"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+            <h2 id="endpoints-GETusers--token-">Users list</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint lets you getting all register Users.</p>
+
+<span id="example-requests-GETusers--token-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://api_mongo_ui.test/users/reprehenderit" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://api_mongo_ui.test/users/reprehenderit',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/users/reprehenderit"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETusers--token-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;message&quot;: &quot;Votre token n'ai pas valide, veuillez le r&eacute;initialiser.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETusers--token-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETusers--token-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETusers--token-"></code></pre>
+</span>
+<span id="execution-error-GETusers--token-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETusers--token-"></code></pre>
+</span>
+<form id="form-GETusers--token-" data-method="GET"
+      data-path="users/{token}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETusers--token-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETusers--token-"
+                    onclick="tryItOut('GETusers--token-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETusers--token-"
+                    onclick="cancelTryOut('GETusers--token-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETusers--token-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>users/{token}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETusers--token-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETusers--token-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="token"
+               data-endpoint="GETusers--token-"
+               value="reprehenderit"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+            <h2 id="endpoints-PUTuser--token-">Change user information</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint lets you updating some information such as password and many else.</p>
+
+<span id="example-requests-PUTuser--token-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request PUT \
+    "http://api_mongo_ui.test/user/adipisci" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"firstname\": \"adipisci\",
+    \"lastname\": \"ducimus\",
+    \"date_naissance\": \"aut\",
+    \"password\": \"eos\",
+    \"email\": \"aut\",
+    \"sexe\": \"laboriosam\"
+}"
+</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://api_mongo_ui.test/user/adipisci',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'firstname' =&gt; 'adipisci',
+            'lastname' =&gt; 'ducimus',
+            'date_naissance' =&gt; 'aut',
+            'password' =&gt; 'eos',
+            'email' =&gt; 'aut',
+            'sexe' =&gt; 'laboriosam',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/user/adipisci"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "firstname": "adipisci",
+    "lastname": "ducimus",
+    "date_naissance": "aut",
+    "password": "eos",
+    "email": "aut",
+    "sexe": "laboriosam"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-PUTuser--token-">
+</span>
+<span id="execution-results-PUTuser--token-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTuser--token-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTuser--token-"></code></pre>
+</span>
+<span id="execution-error-PUTuser--token-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTuser--token-"></code></pre>
+</span>
+<form id="form-PUTuser--token-" data-method="PUT"
+      data-path="user/{token}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTuser--token-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTuser--token-"
+                    onclick="tryItOut('PUTuser--token-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTuser--token-"
+                    onclick="cancelTryOut('PUTuser--token-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTuser--token-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>user/{token}</code></b>
+        </p>
+                <p>
+            <label id="auth-PUTuser--token-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="PUTuser--token-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="token"
+               data-endpoint="PUTuser--token-"
+               value="adipisci"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>firstname</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="firstname"
+               data-endpoint="PUTuser--token-"
+               value="adipisci"
+               data-component="body" hidden>
+    <br>
+<p>only required if you need to change it.</p>
+        </p>
+                <p>
+            <b><code>lastname</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="lastname"
+               data-endpoint="PUTuser--token-"
+               value="ducimus"
+               data-component="body" hidden>
+    <br>
+<p>only required if you need to change it.</p>
+        </p>
+                <p>
+            <b><code>date_naissance</code></b>&nbsp;&nbsp;<small>date</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="date_naissance"
+               data-endpoint="PUTuser--token-"
+               value="aut"
+               data-component="body" hidden>
+    <br>
+<p>only required if you need to change it, YYYY-MM-DD.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="PUTuser--token-"
+               value="eos"
+               data-component="body" hidden>
+    <br>
+<p>only required if you need to change the password of the user. And must be 6 characters in min.</p>
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="PUTuser--token-"
+               value="aut"
+               data-component="body" hidden>
+    <br>
+<p>only required if you need to change the email of the user. exemple@mail.com</p>
+        </p>
+                <p>
+            <b><code>sexe</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sexe"
+               data-endpoint="PUTuser--token-"
+               value="laboriosam"
+               data-component="body" hidden>
+    <br>
+<p>male or female only.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-DELETEuser--token-">Log out</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint lets you logging out a user.</p>
+
+<span id="example-requests-DELETEuser--token-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request DELETE \
+    "http://api_mongo_ui.test/user/illo" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete(
+    'http://api_mongo_ui.test/user/illo',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://api_mongo_ui.test/user/illo"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-DELETEuser--token-">
+</span>
+<span id="execution-results-DELETEuser--token-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEuser--token-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEuser--token-"></code></pre>
+</span>
+<span id="execution-error-DELETEuser--token-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEuser--token-"></code></pre>
+</span>
+<form id="form-DELETEuser--token-" data-method="DELETE"
+      data-path="user/{token}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEuser--token-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEuser--token-"
+                    onclick="tryItOut('DELETEuser--token-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEuser--token-"
+                    onclick="cancelTryOut('DELETEuser--token-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEuser--token-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>user/{token}</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEuser--token-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEuser--token-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="token"
+               data-endpoint="DELETEuser--token-"
+               value="illo"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="php">php</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+<script>
+    $(function () {
+        var exampleLanguages = ["bash","php","javascript"];
+        setupLanguages(exampleLanguages);
+    });
+</script>
+</body>
+</html>

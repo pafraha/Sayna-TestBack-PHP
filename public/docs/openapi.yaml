@@ -1,0 +1,351 @@
+openapi: 3.0.3
+info:
+  title: 'SAYNA API'
+  description: 'Test developer Back-end pour SAYNA API'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://api_mongo_ui.test'
+paths:
+  /sanctum/csrf-cookie:
+    get:
+      summary: 'Return an empty response simply to trigger the storage of the CSRF cookie in the browser.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - Endpoints
+      security: []
+  /:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  title: 'error 404: page not found.'
+                  message: 'Undefined index: HTTP_HOST'
+                properties:
+                  title:
+                    type: string
+                    example: 'error 404: page not found.'
+                  message:
+                    type: string
+                    example: 'Undefined index: HTTP_HOST'
+      tags:
+        - Endpoints
+      security: []
+  /register:
+    post:
+      summary: 'Create a new User'
+      description: 'This endpoint  lets you create a user'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: string
+                  description: 'Le texte de value ne peut contenir plus de 255 caractères.'
+                  example: uecfpqirdoksnrcpvdudrqovkrvplqycvajvzboqzsifmimtypdhuojfudqgjqlhjwzvmxibgmwhmttbaddcjdjnikkvkkhofrxeybuoxv
+                lastname:
+                  type: string
+                  description: 'Le texte de value ne peut contenir plus de 255 caractères.'
+                  example: sisjulw
+                date_naissance:
+                  type: string
+                  description: 'Le texte de value ne peut contenir plus de 255 caractères.'
+                  example: yrpjftxrxhdlivvncvurefewwcoyyizcaguioqdvfrk
+                sexe:
+                  type: string
+                  description: 'Le texte de value ne peut contenir plus de 255 caractères.'
+                  example: wwgmkztfybqkbasadpoysuxctklasegxkwwgqxqpyggyzjjslwrgiygeertyogfzmujgrauwpdkwqzvmembb
+                email:
+                  type: string
+                  description: 'Le champ value doit être une adresse e-mail valide. Le texte de value ne peut contenir plus de 255 caractères.'
+                  example: jrxgfkzzgaekuypilunmmmewbizrlgljlluaxmtbygqmebznufuailljqdyvsgtxzffutspakapslzexufarkqzgidczraccsolwoarcfseofedbzuz
+                password:
+                  type: string
+                  description: 'Le texte value doit contenir au moins 4 caractères.'
+                  example: qcn
+                confirm_password:
+                  type: string
+                  description: 'Les champs value et <code>password</code> doivent être identiques.'
+                  example: consequatur
+              required:
+                - firstname
+                - lastname
+                - date_naissance
+                - sexe
+                - email
+                - password
+                - confirm_password
+      security: []
+  /login:
+    post:
+      summary: 'Log in a user'
+      description: 'This endpoint lets you log in a user with email and password'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user. exemple@mail.com'
+                  example: vel
+                password:
+                  type: string
+                  description: 'The password of the user. And must be 6 characters in min.'
+                  example: nihil
+              required:
+                - email
+                - password
+      security: []
+  '/user/{token}':
+    get:
+      summary: 'Get User information'
+      description: 'This endpoint lets to get the authenticated user information'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  message: 'Votre token n''ai pas valide, veuillez le réinitialiser.'
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Votre token n''ai pas valide, veuillez le réinitialiser.'
+      tags:
+        - Endpoints
+    put:
+      summary: 'Change user information'
+      description: 'This endpoint lets you updating some information such as password and many else.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: string
+                  description: 'only required if you need to change it.'
+                  example: adipisci
+                lastname:
+                  type: string
+                  description: 'only required if you need to change it.'
+                  example: ducimus
+                date_naissance:
+                  type: date
+                  description: 'only required if you need to change it, YYYY-MM-DD.'
+                  example: aut
+                password:
+                  type: string
+                  description: 'only required if you need to change the password of the user. And must be 6 characters in min.'
+                  example: eos
+                email:
+                  type: string
+                  description: 'only required if you need to change the email of the user. exemple@mail.com'
+                  example: aut
+                sexe:
+                  type: string
+                  description: 'male or female only.'
+                  example: laboriosam
+    delete:
+      summary: 'Log out'
+      description: 'This endpoint lets you logging out a user.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: token
+        description: ''
+        example: neque
+        required: true
+        schema:
+          type: string
+  '/users/{token}':
+    get:
+      summary: 'Users list'
+      description: 'This endpoint lets you getting all register Users.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  message: 'Votre token n''ai pas valide, veuillez le réinitialiser.'
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Votre token n''ai pas valide, veuillez le réinitialiser.'
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: token
+        description: ''
+        example: reprehenderit
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''
